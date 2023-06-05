@@ -1,6 +1,9 @@
-// @import typography.scss;
-// @import “color.scss”;
-// @import “layout.scss”;
+@import "header";
+@import "home";
+@import "form";
+@import "list-section";
+@import "popup";
+@import "color";
 
 html {
     width: 100%;
@@ -11,15 +14,16 @@ html {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-  }
+}
 
 body, nav, h1, h2, h3, h4, h5, h6, p {
     margin: 0px;
     padding: 0px;
 }
 
+
 main {
-    background-color: #5FD0D1;
+    background-color: #F7F6F2;
 }
 
 nav {
@@ -27,10 +31,25 @@ nav {
     padding: 0.5em;
 }
 
-.home_page {
-    background-color: #C8C6C6;
+.container {
+    width: 80%;
+    padding: 3rem;
 }
 
 h1 {
     color: #F7F6F2;
 }
+
+p {
+    color: black;
+}
+
+.display_inline {
+    display: inline;
+}
+
+.float-right {
+    float: right;
+}
+
+

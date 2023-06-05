@@ -7,43 +7,102 @@
     <title>Pasta Tracker</title>
     <link rel="stylesheet" href="./scss/main.scss" />
     <link href="https://fonts.googleapis.com/css2?family=Cute+Font&family=Fredoka:wght@300&family=Italiana&display=swap" rel="stylesheet">
-    <script src="script.js" type="module"></script>
 </head>
 
 <body style="margin: 0px;">
     <!-- This is for navigation bar-->
-    <header style="width: 100%; height: 50rem; background-color: #C8C6C6;">
-        <nav style="background-color: #4B6587; padding:0.5rem;">
-            <img src="/assets/logo.png" alt="brandlogo" class="height: 5rem;"/>
-            <h1 class = "display_inline" style="color: #F7F6F2; display: inline; font-size: 5rem; font-weight: lighter; vertical-align: top; margin-left: 1rem; font-family: 'Italiana', serif;">PASTACIAN</h1>
+    <header>
+        <nav>
+            <img src="/assets/logo.png" alt="brandlogo" style="height: 6rem;"/>
+            <h1 class="display_inline" id="pagetitle">PASTACIAN</h1>
             
-            <ul id="nav_items" style="color: #F7F6F2; float: right; list-style-type: none; display: flex; padding: 15px;">
-                <li style="margin-right: 10px;"><a href="#home_page" style="text-decoration: none; color: #F7F6F2;">HOME</a></li>
-                <li><a href="#list_page" style="text-decoration: none; color: #F7F6F2;">LIST</a></li>
+            <ul id="nav_items">
+                <li><a href="#home_page">HOME</a></li>
+                <li><a href="#list-page">LIST</a></li>
             </ul>
         </nav>
-        <div>
-            <img>
-            <h3></h3>
+        <div class="imageContainer">
+            <a id="imageLink" href="#">
+                 <img alt="" id="unsplashImage" />
+            </a>
+            <h2>Today's Pasta</h2>
         </div>
     </header>
-
-        <!-- This is for main section-->
+    
+    <!-- This is for main section-->
     <main>
         <!-- Home Page -->
-        <section id = "home_page">
-            
-        </section class = "">
+        <section class="home_page">
+            <div class="container">
+                <h4>New Recipe</h4>
+                <form id="inputSection">
+                    <div>
+                        <label for="date">Date:</label>
+                        <input type="date" id="date" name="date" required="true">
+                    </div>
 
+                    <div>
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" name="name" required="true">
+                    </div>
+
+                    <div>
+                        <label for="image">Image:</label>
+                        <div class="customFileUpload">
+                            <input type="file" id="image" name="image" accept="image/*" required="true">
+                            <label class="uploadBox">
+                                <img src="/assets/camera-icon.png" alt="cameraicon" style="height: 2rem;"/>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="pastaSauce">Type of Sauce:</label>
+                        <div class="radioGroup">
+                            <input type="radio" id="tomato" name="sauce" value="Tomato-based">
+                            <label for="tomato-based">Tomato-based</label>
+                            <input type="radio" id="cream" name="sauce" value="Cream-based">
+                            <label for="cream-based">Cream-based</label>
+                            <input type="radio" id="oil" name="sauce" value="Oil-based">
+                            <label for="oil-based">Oil-based</label>
+                            <input type="radio" id="others" name="sauce" value="Others">
+                            <label for="others">Others</label>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="pastaType">Type of Pasta:</label>
+                        <select id="pastaType" name="pastaType" required>
+                            <option value="" disabled selected>Select one from below</option>
+                            <option value="Spaghetti">Spaghetti</option>
+                            <option value="Penne">Penne</option>
+                            <option value="Fettucine">Fettucine</option>
+                            <option value="Others">Others</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label for="notes">Notes:</label>
+                        <textarea id="notes" name="notes" placeholder="Keep any notes for future references."></textarea>
+                    </div>
+                    
+                    <button type="button" id="resetBtn">Reset</button>
+                
+                    <button type="submit" id="addBtn" name="submit" value="Submit">Add to my list</button>
+                </form>
+            </div>
+        </section>
+        
         <!-- List Page -->
-        <section id = list_page>
-
+        <section class="list-page">
+            <h3>Your Pasta List</h3>
+            <ul class="item-list" id="itemList"></ul>
         </section>
-
-        <!-- Pop up on List Page -->
-        <section>
-
-        </section>
+        
+        <!-- Popup on List Page -->
+        <div id="overlay"></div>
+        <section id="popupContainer"></section>
     </main>
+    <script src="script.js" type="module"></script>
 </body>
 </html>

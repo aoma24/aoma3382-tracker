@@ -1,12 +1,27 @@
+/* Color Palette */
+$blue-custom: #4B6587;
+$cream-custom: #F0E5CF;
+$gray-custom: #C8C6C6;
+$white-custom: #F7F6F2;
+
 main {
-    background-color: #5FD0D1;
+    background-color: $white-custom;
 }
 
 
 nav {
-    background-color: #4B6587;
+    background-color: $blue-custom;
 }
 
 .home_page {
-    background-color: #C8C6C6;
+    background-color: $white-custom;
 }
+
+.container {
+    background-color: $blue-custom;
+    
+}
+
+/* shift+option+A */
+
+
