@@ -1,0 +1,215 @@
+/* header.scss */
+@media screen and (max-width: 1300px) {
+    header {
+        height: auto;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    nav a {
+        display: none;
+    }
+  
+    .arrow-down {
+      display: inline-block;
+      content: '';
+      margin-left: 5px;
+      width: 20px;
+      height: 20px;
+      margin: 1rem;
+      border-top: 5px solid #f7f6f2;
+      border-right: 5px solid #f7f6f2;
+      transform: rotate(135deg);
+    }
+
+    //hiding random line came out from other <a> tag
+    a.arrow-down::after {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    nav {
+
+        #pagetitle {
+            font-size: 13vw;
+        }
+        
+        img {
+            height: 15vw;
+        }
+    }  
+}
+
+@media screen and (max-width: 400px) {
+    .arrow-down {
+        width: 15px;
+        height: 15px;
+        border-top: 3px solid #f7f6f2;
+        border-right: 3px solid #f7f6f2;
+    }
+}
+
+/* home.scss & form.scss */
+@media screen and (max-width: 1000px) {
+    .home_page {
+        padding: 5vh;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .home_page {
+        flex-direction: column-reverse; 
+
+        .container-left, .container-right {
+            width: 100%;
+            margin: 5vw 0;
+        }
+    
+    }
+
+    .container-left {
+        h4 {
+            font-size: 6.5vw;
+        }
+    }
+
+    .form label, .form-element label {
+        font-size: 4vw;
+    }
+
+    .radioGroup label {
+        font-size: 3vw;
+        margin-right: 15px;
+    }
+    
+    .button-group button {
+        font-size: 4vw;
+    }
+
+    .container-right {
+
+        #recipeCount {
+            font-size: 5vw;
+            margin-bottom: 5vw;
+        }
+
+        .box {
+            margin: 0;
+            padding: 5vw;
+
+            h5 {
+                font-size: 5vw;
+            }
+
+            p {
+                font-size: 4vw;
+            }
+
+            a {
+                font-size: 3vw;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .date-name, .customFileUpload, .uploadBox {
+        width: 100%;
+    }
+
+    input#date, input#name {
+        width: 100%;
+    }
+
+    .customFileUpload {
+        margin-bottom: 5vw;
+    }
+
+    .radioGroup {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+
+        input[type=radio]{
+            transform: scale(0.5);
+        }
+
+        label {
+            position: relative;
+            left: -20px;
+            margin-right: -5px;
+        }
+    }
+
+    select#pastaType {
+        width: 100%;
+    }
+
+    .button-group {
+        flex-direction: column;
+        align-items: center;
+        gap: 3vw;
+
+        #resetBtn {
+            width: 60%;
+        }
+
+        #addBtn {
+            width: 100%;
+        }
+    }
+    
+}
+
+/* list-section.scss */
+@media screen and (max-width: 600px) {
+    .list-page h3 {
+        font-size: 10vw;
+        text-align: center;
+    }
+
+    .item-list {
+        grid-template-columns: repeat(2,1fr);
+
+        li p {
+            font-size: 3vw;
+        }
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .item-list {
+        grid-template-columns: repeat(1,1fr);
+    }
+}
+
+
+
+
+/* popup.scss */
+@media screen and (max-width: 600px) {
+    .popup {
+        width: 80vw;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .popup {
+        width: 100vw;
+    }
+
+    .popup-content {
+        h2 {
+            font-size: 5vw;
+            margin-top: 8vw;
+        }
+
+        button {
+            font-size: 4vw;
+        }
+
+        p {
+            font-size: 4vw;
+        }
+    }
+}

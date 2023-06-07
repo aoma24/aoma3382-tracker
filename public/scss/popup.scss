@@ -1,4 +1,5 @@
 .popup {
+    width: 60vw;
     position: fixed;
     top:50%;
     left: 50%;
@@ -12,56 +13,66 @@
     z-index: 9999;
 }
 
-
 .popup-content {
     position: relative;
     background-color: #F7F6F2;
-    padding: 5rem;
+    padding: 5vw 3vw;
     max-width: 100%;
     text-align: center;
     border-radius: 10px;
-}
 
-.popup-content p {
-    text-align: left;
-    color: #212121;
-    margin: 1rem;
-}
+    h2 {
+        font-weight: lighter;
+        margin-bottom: 1rem;
+        font-family: Fredoka,sans-serif;
+        font-size: 3vw;
+    }
 
-.popup-image {
-    width: 90%;
-    height: auto;
-    border: 3px solid #ABABAB;
-    max-width: 100%;
-    max-height: 100%;
-    border-radius: 5px;
-    object-fit: cover;
-    aspect-ratio: 3/2;
-}
+    p {
+        text-align: left;
+        color: #212121;
+        margin: 1rem;
+    }
 
-.close-btn {
-    background: #C8C6C6;
-    border-radius: 20px;
-    padding: 8px 16px;
-    cursor: pointer;
-    font-size: 18px;
-    position: absolute;
-    top: 10px;
-    right: 10px;
-}
-  
-.delete-btn2 {
-    color: #fff;
-    cursor: pointer;
-    background-color: #4B6587;
-    border: none;
-    border-radius: 20px;
-    margin-top: 10px;
-    padding: 10px 25px;
+    .popup-image {
+        width: 90%;
+        height: auto;
+        border: 3px solid #ABABAB;
+        max-width: 100%;
+        max-height: 100%;
+        border-radius: 5px;
+        object-fit: cover;
+        aspect-ratio: 3/2;
+    
+    }
+    
+    button {
+        font-family: Fredoka,sans-serif;
+        border: none;
+        border-radius: 25px;
+        cursor: pointer;
+        font-size: 1.5vw;
+        font-weight: lighter;
+    }
+    
+    .close-btn {
+        background: #C8C6C6;
+        padding: 6px 20px;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+    }
+      
+    .delete-btn2 {
+        color: #F7F6F2;
+        background-color: #4B6587;
+        margin-top: 10px;
+        padding: 10px 30px;
+    }
 }
   
 .delete-btn2:hover {
-    background-color: black;
+    background-color: #212121;
 }
   
 #overlay {

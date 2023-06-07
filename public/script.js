@@ -1,6 +1,7 @@
 /*
 Using the Unsplash API to display random pasta image
 Partially referred to: https://youtu.be/e8p1zSNmK7Q
+Original source: https://unsplash.com/developers
 */
 const clientID = "FJCiQHf7dxnNHq5FIatk85sy6neYzJeEvXiX_KbXlOU";
 const endpoint = `https://api.unsplash.com/photos/random/?query=pasta&orientation=landscape&client_id=${clientID}`;
@@ -16,7 +17,11 @@ fetch(endpoint)
     console.log("Error: " + error);
   });
 
-  
+
+/*
+Below is all related to user input and local storage
+(adding, displaying, and deleting items)
+*/
 const form = document.getElementById('inputSection');
 const itemList = document.getElementById('itemList');
 
@@ -68,13 +73,13 @@ function displayPopup(item) {
     const content = document.createElement("div");
     content.classList.add("popup-content");
     content.innerHTML = `
-      <span class="close-btn">Close</span>
+      <button class="close-btn">Close</button>
       <h2>${item.name}</h2>
       <img class="popup-image" src="${item.imageFile}" alt="Pasta Image">
       <p><strong>Date:</strong> ${item.date}</p>
       <p><strong>Type of Sauce:</strong> ${item.sauce}</p>
       <p><strong>Type of Pasta:</strong> ${item.pastaType}</p>
-      <p><strong>Notes:</strong> ${item.notes}</p>
+      <p><strong>Notes:</strong></br> ${item.notes}</p>
       <button class="delete-btn2">Delete from the list</button>
     `;
   
@@ -120,13 +125,26 @@ overlay.addEventListener("click", function () {
     }
 });
 
+// Assuming you have an array called "recipeList" containing your recipes
+let recipeList = [];
+
+// Get the count of recipes and update the element's content
+function updateRecipeCount() {
+  const recipeCount = recipeList.length;
+  const recipeCountElement = document.getElementById("recipeCount");
+  recipeCountElement.innerHTML = `You have <span> ${recipeCount}</span> recipes so far`;
+}
+
 
 function displayItems() {
-    itemList.innerHTML = "";
+  itemList.innerHTML = "";
   
-    let localItems = JSON.parse(localStorage.getItem("Pasta list"));
+  let localItems = JSON.parse(localStorage.getItem("Pasta list"));
   
     if (localItems !== null) {
+
+      recipeList = localItems; //Assign localItems to recipeList
+
       localItems.sort((a, b) => b.id - a.id);
   
       localItems.forEach(function (item) {
@@ -153,11 +171,14 @@ function displayItems() {
   
           listItem.remove();
           event.stopPropagation();
+
+          updateRecipeCount(); // Update the recipe count
         });
       });
     }
+  updateRecipeCount(); // Update the recipe count
 }
-  
+
 
 function storeFormData(formData) {
   let localItems = JSON.parse(localStorage.getItem("Pasta list"));
@@ -174,6 +195,10 @@ function storeFormData(formData) {
 
   localStorage.setItem("Pasta list", JSON.stringify(localItems));
 
+  recipeList = localItems; // Update the recipeList array
+  displayItems();
+  updateRecipeCount(); // Update the recipe count
+
   displayItems();
 }
 
@@ -182,4 +207,62 @@ resetBtn.addEventListener('click', function () {
   form.reset();
 });
 
+// Sample dummy data for the list
+const dummyItems = [
+  {
+    id: 1,
+    name: "Spaghetti Bolognese",
+    imageFile: "/assets/dummy-images/pasta1.jpg",
+    pastaType: "Spaghetti",
+    sauce: "tomato",
+    notes: "Delicious and hearty pasta dish!",
+    date: "20/05/2023"
+  },
+  {
+    id: 2,
+    name: "Spaghetti Pesto",
+    imageFile: "/assets/dummy-images/pasta2.jpg",
+    pastaType: "Spaghetti",
+    sauce: "oil",
+    notes: "Creamy and indulgent pasta dish!",
+    date: "22/05/2023"
+  },
+  {
+    id: 3,
+    name: "Seafood Pasta",
+    imageFile: "/assets/dummy-images/pasta3.jpg",
+    pastaType: "Fettuccine",
+    sauce: "oil",
+    notes: "Spicy and oily pasta dish!",
+    date: "25/05/2023"
+  },
+  {
+    id: 4,
+    name: "Gnocchi Arrabiata",
+    imageFile: "/assets/dummy-images/pasta5.jpg",
+    pastaType: "Gnocchi",
+    sauce: "tomato",
+    notes: "Flavorful pasta dish!",
+    date: "26/05/2023"
+  },
+  {
+    id: 5,
+    name: "Penne Carbonara",
+    imageFile: "/assets/dummy-images/pasta3.jpg",
+    pastaType: "Penne",
+    sauce: "cream",
+    notes: "Creamy pasta dish with chicken!",
+    date: "27/05/2023"
+  }
+];
+
+function addDummyItems() {
+  const storedItems = JSON.parse(localStorage.getItem("Pasta list"));
+  if (storedItems === null || storedItems.length === 0) {
+    localStorage.setItem("Pasta list", JSON.stringify(dummyItems));
+  }
+}
+
+addDummyItems();
 displayItems();
+updateRecipeCount();
